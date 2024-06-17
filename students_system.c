@@ -9,6 +9,8 @@ void sort_math();//数学成绩排序
 void sort_eng();//英语成绩排序
 void changestu(int k);//修改学生信息
 void menu();//声明菜单函数
+void read();//读取存储数据文件函数
+void save();//保存数据文件函数
 int search_id();//声明查找学号函数
 int search_name();//声明查找姓名函数
 int search();//声明查找总函数
@@ -25,11 +27,11 @@ struct Stu {
 } stus[N];
 
 int cnt = 0; //记录人数
-int choose = 1;//选择
 
 void in_put() { //插入学生信息函数
 	while (1) {
 		system("cls");
+		getchar();
 		printf("请输入学生的学号：\n");
 		scanf("%ld", &stus[cnt].id);
 		getchar();
@@ -324,6 +326,8 @@ void faid(){//不及格名单函数
 
 
 int main() {
+	int choose = 1;//选择
+	read();
 	do {
 		menu();
 		scanf("%d", &choose);
@@ -367,6 +371,8 @@ int main() {
 		};
 		system("cls");
 	} while (choose);
+	sort_id();
+	save();
 	printf("\ngood bye~");
 	return 0;
 }
@@ -556,6 +562,26 @@ int search_name() {//查找姓名功能
 		return N;
 	}
 	return j;
+}
+
+void read()
+{
+	FILE *fp=fopen("data.txt","r+");
+	fscanf(fp,"%d",&cnt);
+	for(int j=0;j<cnt;++j){
+		fscanf(fp,"%ld %s %f %f %f %f %f\n",&stus[j].id, stus[j].name, &stus[j].chi_mark, &stus[j].math_mark, &stus[j].eng_mark, &stus[j].sum, &stus[j].ave);
+	}
+	fclose(fp);
+}
+
+void save()
+{
+	FILE *fp=fopen("data.txt","w+");
+	fprintf(fp,"%d\n",cnt);
+	for(int j=0;j<cnt;++j){
+		fprintf(fp,"%ld %s %.2f %.2f %.2f %.2f %.2f\n",stus[j].id, stus[j].name, stus[j].chi_mark, stus[j].math_mark, stus[j].eng_mark, stus[j].sum, stus[j].ave);
+	}
+	fclose(fp);
 }
 
 
