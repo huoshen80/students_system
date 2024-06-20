@@ -280,19 +280,19 @@ void insert() {//插入函数
 			stus[i+1]=stus[i];
 			
 		}
-		printf("请输入学生的学号：\n");
+		printf("请输入插入学生的学号：\n");
 		scanf("%ld", &stus[biao].id);
 		getchar();
-		printf("请输入学生的姓名：\n");
+		printf("请输入插入学生的姓名：\n");
 		scanf("%s", stus[biao].name);
 		getchar();
-		printf("请输入学生的语文成绩：\n");
+		printf("请输入插入学生的语文成绩：\n");
 		scanf("%f", &stus[biao].chi_mark);
 		getchar();
-		printf("请输入学生的数学成绩：\n");
+		printf("请输入插入学生的数学成绩：\n");
 		scanf("%f", &stus[biao].math_mark);
 		getchar();
-		printf("请输入学生的英语成绩：\n");
+		printf("请输入插入学生的英语成绩：\n");
 		scanf("%f", &stus[biao].eng_mark);
 		getchar();
 		stus[biao].sum = stus[biao].chi_mark + stus[biao].math_mark + stus[biao].eng_mark;
